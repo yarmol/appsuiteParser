@@ -2,18 +2,20 @@ package accsuite.starter;
 
 import java.io.IOException;
 
+import accsuite.upload.into.Chunk;
+
 public class AccSuiteRunning implements Runnable {
 	public AccSuiteRunning() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	private AccSuiterStarter starter;
+	private Chunk starter;
 
 	
 
-	public AccSuiteRunning(AccSuiterStarter starterParams) {
-		setStarter(starterParams);
+	public AccSuiteRunning(Chunk chunk) {
+		setStarter(chunk);
 	}
 
 	public void run()  {
@@ -32,12 +34,12 @@ public class AccSuiteRunning implements Runnable {
 
 	}
 
-	public AccSuiterStarter getStarter() {
+	public Chunk getStarter() {
 		return starter;
 	}
 
-	public void setStarter(AccSuiterStarter starter) {
-		this.starter = starter;
+	public void setStarter(Chunk chunk) {
+		this.starter = chunk;
 	}
 
 }

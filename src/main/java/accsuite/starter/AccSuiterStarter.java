@@ -1,5 +1,10 @@
 package accsuite.starter;
 
+import java.util.List;
+
+import accsuite.main.Global;
+import accsuite.upload.into.Chunk;
+
 /**
  * 
  * Class AccSuiterStarter.
@@ -11,41 +16,27 @@ package accsuite.starter;
  */
 
 public class AccSuiterStarter  {
-	private String accSuiteBinPath;
-	private  String workingDirectoryPath;
-	
-	final int POOL_ENTITY_COUNT = 5;
+	private List<Chunk> listOfChunks;
 	
 	
-	AccSuiterStarter(String accSuiteBinPath,String workingDirectoryPath) {
-		setAccSuiteBinPath(accSuiteBinPath);
-		setWorkingDirectoryPath(workingDirectoryPath);
+
+	
+	
+	AccSuiterStarter(List<Chunk> listOfChunks) {
+			this.listOfChunks = listOfChunks;
 	}
 	
 	public void startUpload() {
-		for (int i = 0; i < POOL_ENTITY_COUNT; ++i) {
+		
+		for (int i = 0; i < Global.getNumberOfThreads(); ++i) {
 			
-			Thread runningAccSuiteUpload = new Thread(new AccSuiteRunning(this));
+			Thread runningAccSuiteUpload = new Thread(new AccSuiteRunning(listOfChunks.get(i)));
 			runningAccSuiteUpload.run();
 			
 		}
 		
 	}
 
-	public String getAccSuiteBinPath() {
-		return accSuiteBinPath;
-	}
-
-	public void setAccSuiteBinPath(String accSuiteBinPath) {
-		this.accSuiteBinPath = accSuiteBinPath;
-	}
-
-	public String getWorkingDirectoryPath() {
-		return workingDirectoryPath;
-	}
-
-	public void setWorkingDirectoryPath(String workingDirectoryPath) {
-		this.workingDirectoryPath = workingDirectoryPath;
-	}
+	
 	
 }
