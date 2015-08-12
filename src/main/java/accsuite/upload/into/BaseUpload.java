@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import accsuite.main.Global;
-import accsuite.starter.AccSuiterStarter;
+import accsuite.threadsStarter.AccSuiterStarter;
 
 public class BaseUpload {
 	

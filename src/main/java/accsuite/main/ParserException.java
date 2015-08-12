@@ -3,7 +3,6 @@ package accsuite.main;
 import java.lang.reflect.Method;
 
 import accsuite.*;
-import accsuite.parser.Constants;
 /**
  * 
  * Class ParserException.

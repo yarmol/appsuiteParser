@@ -1,4 +1,4 @@
-package accsuite.parser;
+package accsuite.main;
 
 public class Constants {
 	//"C:\Program Files\1cv82\common\1cestart.exe" ENTERPRISE  /F"%KAT%" /N"%USER%"  /P"%PASW%"  DisableStartupMessages /C ЗавершитьРаботуПользователей

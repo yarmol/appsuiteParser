@@ -5,8 +5,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import accsuite.main.Constants;
 import accsuite.main.Global;
-import accsuite.parser.Constants;
 
 public class Divider {
 	Map<FileDescriptor, String> internalMap;

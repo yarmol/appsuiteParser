@@ -1,4 +1,4 @@
-package accsuite.starter;
+package accsuite.threadsStarter;
 
 import java.io.IOException;
 

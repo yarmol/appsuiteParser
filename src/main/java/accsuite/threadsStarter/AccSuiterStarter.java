@@ -1,4 +1,4 @@
-package accsuite.starter;
+package accsuite.threadsStarter;
 
 import java.util.List;
 
@@ -22,7 +22,7 @@ public class AccSuiterStarter  {
 
 	
 	
-	AccSuiterStarter(List<Chunk> listOfChunks) {
+	public AccSuiterStarter(List<Chunk> listOfChunks) {
 			this.listOfChunks = listOfChunks;
 	}
 	

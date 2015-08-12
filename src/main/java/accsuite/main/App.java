@@ -1,10 +1,9 @@
-package accsuite.parser;
+package accsuite.main;
 
 import java.io.IOException;
 import java.util.List;
 
 import accsuite.*;
-import accsuite.main.Global;
 import accsuite.upload.into.BaseUpload;
 import accsuite.upload.into.Chunk;
 

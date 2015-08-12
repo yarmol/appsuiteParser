@@ -1,7 +1,7 @@
 package accsuite.upload.into;
 
+import accsuite.main.Constants;
 import accsuite.main.DumpTypeEnum;
-import accsuite.parser.Constants;
 
 public class CommandBuilder {
 
