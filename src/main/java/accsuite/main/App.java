@@ -1,4 +1,11 @@
-package accsuite.parser;
+package accsuite.main;
+
+import java.io.IOException;
+import java.util.List;
+
+import accsuite.*;
+import accsuite.upload.into.BaseUpload;
+import accsuite.upload.into.Chunk;
 
 /**
  * 
@@ -32,8 +39,24 @@ public class App {
 	
 	
 
-	public static void start(String[] args) {
-		///first a
+	public static void start(String[] args) throws IOException {
+		
+		// setting up global values
+		
+		Global.setAccSuiteBinPath(args[0]);
+		Global.setAnalizingDir(args[3]);
+		Global.setGitBinPath(args[1]);
+		Global.setWorkingDir(args[2]);
+		Global.setNumberOfThreads(5);
+		
+		//running first stage: UPLOAD TO ACC.SUITE BASES
+
+		BaseUpload.start();
+		
+		
+		
+		
+		
 		
 	}
 

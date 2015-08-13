@@ -1,0 +1,474 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="13.3">
+  <zoom_level>3</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>435</x>
+      <y>153</y>
+      <w>54</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>accsuite.main::Global
+--
+-accSuiteBinPath: String
+-numberOfThreads = 0: int
+-gitBinPath: String
+-workingDir: String
+-analizingDir: String
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>498</x>
+      <y>153</y>
+      <w>60</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>accsuite.main::App
+--
+--
++start(String[] args): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>750</x>
+      <y>297</y>
+      <w>75</w>
+      <h>57</h>
+    </coordinates>
+    <panel_attributes>accsuite.upload.into::FileDescriptor
+--
+-type: DumpTypeEnum
+-name: String
+-path: Path
+-size: long
+-datetime: long
+-dateTimeView: String
+--
+~FileDescriptor(Path filePath): ctor
++getType(): DumpTypeEnum
++getName(): String
++getPath(): Path
++getSize(): long
++getDatetime(): long
++getDateTimeView(): String
++compareTo(FileDescriptor o): int
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>705</x>
+      <y>153</y>
+      <w>102</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>accsuite.upload.into::DumpsDataSupplier
+--
+-dumpsPathDescription: String
+-instance: DumpsDataSupplier
+--
+-DumpsDataSupplier(String dumpsPath): ctor
++getDumpsPath(): String
++setDumpsPath(String dumpsPath): void
++getInstance(String dumpsPath): DumpsDataSupplier
++getDumpsList(): List&lt;Path&gt;
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>423</x>
+      <y>255</y>
+      <w>129</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>accsuite.upload.into::Chunk
+--
+~file: FileDescriptor
+~command: String
+~order: int
+--
+~Chunk(): ctor
++Chunk(FileDescriptor
+   fileDescriptor): ctor
++add(FileDescriptor 
+      fileDescriptor, 
+      String commandValue): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>582</x>
+      <y>153</y>
+      <w>69</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>accsuite.upload.into::BaseUpload
+--
+
++start(): void
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>819</x>
+      <y>225</y>
+      <w>63</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>accsuite.upload.into::
+CommandBuilder
+--
++createCommand(FileDescriptor
+keyFile): String
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>555</x>
+      <y>159</y>
+      <w>33</w>
+      <h>9</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>90.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>648</x>
+      <y>159</y>
+      <w>63</w>
+      <h>9</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>190.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>639</x>
+      <y>174</y>
+      <w>72</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>220.0;190.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>744</x>
+      <y>204</y>
+      <w>63</w>
+      <h>9</h>
+    </coordinates>
+    <panel_attributes>List&lt;&gt; listOfFiles</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>762</x>
+      <y>192</y>
+      <w>9</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>705</x>
+      <y>219</y>
+      <w>99</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>accsuite.upload.into::CommandDescriptionSupplier
+--
+- List&lt;&gt;
+--
++ (List&lt;&gt;)
++ analize()
++ buildCommands()
++ getMap()
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>801</x>
+      <y>231</y>
+      <w>24</w>
+      <h>12</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+1:m</panel_attributes>
+    <additional_attributes>60.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>738</x>
+      <y>252</y>
+      <w>42</w>
+      <h>51</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+1:n</panel_attributes>
+    <additional_attributes>10.0;10.0;120.0;150.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>675</x>
+      <y>204</y>
+      <w>75</w>
+      <h>9</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;230.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>798</x>
+      <y>270</y>
+      <w>66</w>
+      <h>9</h>
+    </coordinates>
+    <panel_attributes>TreeMap&lt;FileDescriptor,String&gt; 
+fileCommandMapping;</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>768</x>
+      <y>252</y>
+      <w>66</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+</panel_attributes>
+    <additional_attributes>10.0;10.0;200.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>801</x>
+      <y>276</y>
+      <w>27</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>lt=.
+m:1</panel_attributes>
+    <additional_attributes>10.0;70.0;70.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>825</x>
+      <y>243</y>
+      <w>21</w>
+      <h>33</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+fill </panel_attributes>
+    <additional_attributes>40.0;90.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>591</x>
+      <y>255</y>
+      <w>57</w>
+      <h>33</h>
+    </coordinates>
+    <panel_attributes>Divider
+--
+Map&lt;&gt; 
+--
+~ (Map&lt;&gt; fileCommandMapping)
++ List&lt;Chunk&gt; getChunks();</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>621</x>
+      <y>174</y>
+      <w>9</w>
+      <h>87</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;270.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>645</x>
+      <y>267</y>
+      <w>159</w>
+      <h>12</h>
+    </coordinates>
+    <panel_attributes>lt=.
+1:1</panel_attributes>
+    <additional_attributes>10.0;20.0;510.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>483</x>
+      <y>177</y>
+      <w>114</w>
+      <h>87</h>
+    </coordinates>
+    <panel_attributes>lt=.
+ &gt;
+ getNumberThreads</panel_attributes>
+    <additional_attributes>360.0;270.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>549</x>
+      <y>270</y>
+      <w>48</w>
+      <h>12</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m:1</panel_attributes>
+    <additional_attributes>140.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>528</x>
+      <y>306</y>
+      <w>72</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>lt=.
+m:1</panel_attributes>
+    <additional_attributes>10.0;10.0;220.0;140.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>594</x>
+      <y>336</y>
+      <w>102</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>accsuite.threadsStarter::AccSuiterStarter
+--
+-listOfChunks: List&lt;Chunk&gt;
+--
++AccSuiterStarter(List&lt;Chunk&gt; 
+   listOfChunks): ctor
++startUpload(): void
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>630</x>
+      <y>174</y>
+      <w>48</w>
+      <h>168</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>140.0;540.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>594</x>
+      <y>375</y>
+      <w>105</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>AccSuiteRunning [Runnable]
+Chunk actingChunk;
+--
++ run();</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>642</x>
+      <y>357</y>
+      <w>15</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+m:1</panel_attributes>
+    <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>522</x>
+      <y>306</y>
+      <w>78</w>
+      <h>87</h>
+    </coordinates>
+    <panel_attributes>lt=.
+1:1</panel_attributes>
+    <additional_attributes>10.0;10.0;240.0;270.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>612</x>
+      <y>399</y>
+      <w>42</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>   {
+   exec(actingChunk.command)
+   }</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>594</x>
+      <y>384</y>
+      <w>24</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=.
+</panel_attributes>
+    <additional_attributes>60.0;60.0;10.0;10.0</additional_attributes>
+  </element>
+</diagram>
