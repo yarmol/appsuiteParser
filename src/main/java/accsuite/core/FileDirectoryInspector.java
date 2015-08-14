@@ -1,4 +1,4 @@
-package accsuite.upload.into;
+package accsuite.core;
 
 import java.io.IOException;
 import java.nio.file.FileVisitOption;
@@ -9,11 +9,11 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 
-public class DumpsDataSupplier {
+public class FileDirectoryInspector {
 	private String dumpsPathDescription;
-	private static DumpsDataSupplier instance;
+	private static FileDirectoryInspector instance;
 	
-	private DumpsDataSupplier(String dumpsPath) {
+	private FileDirectoryInspector(String dumpsPath) {
 		setDumpsPath(dumpsPath);
 	}
 	
@@ -26,9 +26,9 @@ public class DumpsDataSupplier {
 		this.dumpsPathDescription = dumpsPath;
 	}
 		
-	public static DumpsDataSupplier getInstance(String dumpsPath) {
+	public static FileDirectoryInspector getInstance(String dumpsPath) {
 		if (instance == null) {
-			return new DumpsDataSupplier(dumpsPath);
+			return new FileDirectoryInspector(dumpsPath);
 		}
 		else {
 			return instance;

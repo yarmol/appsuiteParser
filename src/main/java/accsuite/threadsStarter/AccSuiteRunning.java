@@ -2,7 +2,7 @@ package accsuite.threadsStarter;
 
 import java.io.IOException;
 
-import accsuite.upload.into.Chunk;
+import accsuite.core.Package;
 
 public class AccSuiteRunning implements Runnable {
 	public AccSuiteRunning() {
@@ -10,11 +10,11 @@ public class AccSuiteRunning implements Runnable {
 		// TODO Auto-generated constructor stub
 	}
 
-	private Chunk starter;
+	private Package starter;
 
 	
 
-	public AccSuiteRunning(Chunk chunk) {
+	public AccSuiteRunning(Package chunk) {
 		setStarter(chunk);
 	}
 
@@ -34,11 +34,11 @@ public class AccSuiteRunning implements Runnable {
 
 	}
 
-	public Chunk getStarter() {
+	public Package getStarter() {
 		return starter;
 	}
 
-	public void setStarter(Chunk chunk) {
+	public void setStarter(Package chunk) {
 		this.starter = chunk;
 	}
 

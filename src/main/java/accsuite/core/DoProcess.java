@@ -1,4 +1,4 @@
-package accsuite.upload.into;
+package accsuite.core;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -9,10 +9,10 @@ import java.util.Map;
 import accsuite.main.Global;
 import accsuite.threadsStarter.AccSuiterStarter;
 
-public class BaseUpload {
+public class DoProcess {
 	
 	public static void start() throws IOException {
-		DumpsDataSupplier dumper = DumpsDataSupplier.getInstance(Global.getAnalizingDir());
+		FileDirectoryInspector dumper = FileDirectoryInspector.getInstance(Global.getAnalizingDir());
 		List<Path> listOfFiles = dumper.getDumpsList();
 		
 		//building map of files-commands to upload
@@ -23,7 +23,7 @@ public class BaseUpload {
 		
 		//get array of chunks (every chunk consist of &Global.getNumberOfThreads() elements)
 		Divider div 	= new Divider(fileAndCommandMap);
-		List<Chunk> chunks = div.getChunks();
+		List<Package> chunks = div.getChunks();
 		
 		//send chunks to process
 		AccSuiterStarter accLoadInto = new AccSuiterStarter(chunks);

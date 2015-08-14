@@ -1,4 +1,4 @@
-package accsuite.upload.into;
+package accsuite.core;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +27,7 @@ public class Divider {
 		
 	}
 
-	public ArrayList<Chunk> getChunks() {
+	public ArrayList<Package> getChunks() {
 		
 		Set<FileDescriptor> setKeys = internalMap.keySet();
 	
@@ -38,9 +38,9 @@ public class Divider {
 		int arrayIdx 	   = 0;
 		int threadLimit    = Global.getNumberOfThreads();
 	
-		Chunk activeChunk = null;
+		Package activeChunk = null;
 		
-		ArrayList<Chunk> resultChunks = new ArrayList<>();
+		ArrayList<Package> resultChunks = new ArrayList<>();
 		
 		while (isContinue) {
 			if (arrayIdx >= descFiles.length) {
@@ -49,7 +49,7 @@ public class Divider {
 			}
 			
 			if ((arrayIdx == 0) || (((arrayIdx+1) % threadLimit) == 1)) {
-				activeChunk = new Chunk();
+				activeChunk = new Package();
 			}
 			else if (((arrayIdx+1) % threadLimit) == 0) {
 				//store active chunk

@@ -2,8 +2,8 @@ package accsuite.threadsStarter;
 
 import java.util.List;
 
+import accsuite.core.Package;
 import accsuite.main.Global;
-import accsuite.upload.into.Chunk;
 
 /**
  * 
@@ -16,13 +16,13 @@ import accsuite.upload.into.Chunk;
  */
 
 public class AccSuiterStarter  {
-	private List<Chunk> listOfChunks;
+	private List<Package> listOfChunks;
 	
 	
 
 	
 	
-	public AccSuiterStarter(List<Chunk> listOfChunks) {
+	public AccSuiterStarter(List<Package> listOfChunks) {
 			this.listOfChunks = listOfChunks;
 	}
 	

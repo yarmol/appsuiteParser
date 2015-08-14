@@ -1,6 +1,7 @@
 
-package accsuite.upload.into;
+package accsuite.core;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.List;
@@ -10,18 +11,28 @@ import java.util.TreeMap;
 
 public class CommandDescriptionSupplier {
 	private List<Path> dt_cf_list;
-	private Map<FileDescriptor,String> fileCommandMapping = new TreeMap<>();
+	
+	private Map<FileDirectoryDescriptor,CommandRun> fileCommandMapping = new TreeMap<>();
 
 	public CommandDescriptionSupplier(List<Path> listOfFiles) {
 		setDt_cf_list(listOfFiles);
 	}
 
 	public void analize() throws IOException {
+		FileDirectoryDescriptor file = null;
 		for (Path filePath : dt_cf_list) {
-			FileDescriptor file = new FileDescriptor(filePath.toAbsolutePath()); 
-			if (file.getType() != null) {
+			//File currentFile = new File(filePath.toAbsolutePath().toString());
+			//if (currentFile.exists()) {
+				if (currentFile.isFile()) { 
+					file = new FileDescriptor(filePath.toAbsolutePath());
+				}
+				else {
+					file = new DirectoryDescriptor(filePath.toAbsolutePath());
+				}
+			
+				
 				fileCommandMapping.put(file, "");
-			}
+			//}
 			
 		}
 		
@@ -29,8 +40,9 @@ public class CommandDescriptionSupplier {
 
 	public void buildCommands() {
 		
-		for (FileDescriptor keyFile : fileCommandMapping.keySet()) {
-			String commandToRun = CommandBuilder.createCommand(keyFile);
+		for (FileDirectoryDescriptor keyFile : fileCommandMapping.keySet()) {
+			
+			CommandRun commandToRun = CommandBuilder.createCommand(keyFile);
 		
 			fileCommandMapping.put(keyFile, commandToRun);
 		

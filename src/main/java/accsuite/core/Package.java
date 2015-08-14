@@ -1,15 +1,15 @@
-package accsuite.upload.into;
+package accsuite.core;
 
-public class Chunk {
+public class Package {
 	   FileDescriptor file;
 	   String 		  command;
 	   int			  order;
 	   
-	   Chunk() {
+	   Package() {
 		   
 	   }
 
-	public Chunk(FileDescriptor fileDescriptor) {
+	public Package(FileDescriptor fileDescriptor) {
 		// TODO Auto-generated constructor stub
 	}
 

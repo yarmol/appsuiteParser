@@ -4,8 +4,8 @@ import java.io.IOException;
 import java.util.List;
 
 import accsuite.*;
-import accsuite.upload.into.BaseUpload;
-import accsuite.upload.into.Chunk;
+import accsuite.core.DoProcess;
+import accsuite.core.Package;
 
 /**
  * 
@@ -51,7 +51,7 @@ public class App {
 		
 		//running first stage: UPLOAD TO ACC.SUITE BASES
 
-		BaseUpload.start();
+		DoProcess.start();
 		
 		
 		

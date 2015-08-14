@@ -1,4 +1,4 @@
-package accsuite.upload.into;
+package accsuite.core;
 
 import junit.framework.TestCase;
 
