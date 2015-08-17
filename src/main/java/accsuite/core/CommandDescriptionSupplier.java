@@ -21,19 +21,9 @@ public class CommandDescriptionSupplier {
 	public void analize() throws IOException {
 		FileDirectoryDescriptor file = null;
 		for (Path filePath : dt_cf_list) {
-			//File currentFile = new File(filePath.toAbsolutePath().toString());
-			//if (currentFile.exists()) {
-				if (currentFile.isFile()) { 
-					file = new FileDescriptor(filePath.toAbsolutePath());
-				}
-				else {
-					file = new DirectoryDescriptor(filePath.toAbsolutePath());
-				}
-			
-				
-				fileCommandMapping.put(file, "");
-			//}
-			
+				DescriptorCreator fileLinkCreator = new DescriptorCreator(filePath);
+				file = fileLinkCreator.getDescriptor();
+				fileCommandMapping.put(file,null);
 		}
 		
 	}
@@ -51,7 +41,7 @@ public class CommandDescriptionSupplier {
 		
 	}
 
-	public Map<FileDescriptor, String> getMap() {
+	public Map<FileDirectoryDescriptor, CommandRun> getMap() {
 		
 		return fileCommandMapping;
 	}

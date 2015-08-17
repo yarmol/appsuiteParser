@@ -1,6 +1,7 @@
 package accsuite.core;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -8,12 +9,13 @@ import java.util.Set;
 import accsuite.main.Constants;
 import accsuite.main.Global;
 
-public class Divider {
-	Map<FileDescriptor, String> internalMap;
+public class Divider<T,V> {
+	Map<T, V> internalMap;
 	int chunkCount;
 	
-	public Divider(Map<FileDescriptor, String> fileAndCommandMap) {
+	public Divider(Map<T, V> fileAndCommandMap) {
 		internalMap 	= fileAndCommandMap;
+		
 		double preValueDouble = (double)(internalMap.size() / Global.getNumberOfThreads());
 		int	   preValueInt = (int)(internalMap.size() / Global.getNumberOfThreads());
 	
@@ -27,37 +29,41 @@ public class Divider {
 		
 	}
 
-	public ArrayList<Package> getChunks() {
+	public ArrayList<Package<T,V>> getPackages() {
 		
-		Set<FileDescriptor> setKeys = internalMap.keySet();
+		List<T> listKeys = new LinkedList<>(internalMap.keySet());
 	
-		FileDescriptor[] descFiles  = (FileDescriptor[]) setKeys.toArray();
-		
-		
+			
 		boolean isContinue = true;
 		int arrayIdx 	   = 0;
 		int threadLimit    = Global.getNumberOfThreads();
 	
-		Package activeChunk = null;
+		Package<T,V> activePackage = null;
 		
-		ArrayList<Package> resultChunks = new ArrayList<>();
-		
+		ArrayList<Package<T,V>> resultPackages = new ArrayList<>();
+		int counter = 0;
 		while (isContinue) {
-			if (arrayIdx >= descFiles.length) {
+			if (arrayIdx >= listKeys.size()) {
 				isContinue = false;
 				continue;
 			}
 			
 			if ((arrayIdx == 0) || (((arrayIdx+1) % threadLimit) == 1)) {
-				activeChunk = new Package();
+				activePackage = new Package<>(counter);
+				++counter;
 			}
 			else if (((arrayIdx+1) % threadLimit) == 0) {
 				//store active chunk
-				resultChunks.add(activeChunk);
+				
+				resultPackages.add(activePackage);
 				
 			}
 			
-			activeChunk.add(descFiles[arrayIdx], internalMap.get(descFiles[arrayIdx]));
+			T key   = listKeys.get(arrayIdx);
+			V value = internalMap.get(key);
+			
+			activePackage.add(key,value);
+			
 			++arrayIdx;
 		}
 		
@@ -67,7 +73,7 @@ public class Divider {
 		
 		
 		
-		return resultChunks;
+		return resultPackages;
 	}
 
 }

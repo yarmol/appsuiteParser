@@ -1,13 +1,17 @@
 package accsuite.core;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.FileVisitOption;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
+
+import accsuite.main.Global;
 
 public class FileDirectoryInspector {
 	private String dumpsPathDescription;
@@ -38,13 +42,29 @@ public class FileDirectoryInspector {
 	
 	public List<Path> getDumpsList() throws IOException {
 		
-		Path dumpPath = Paths.get(dumpsPathDescription);
+		//Path dumpPath = Paths.get(dumpsPathDescription);
 		
-		Stream<Path> streamOfFiles = Files.walk(dumpPath, FileVisitOption.FOLLOW_LINKS);
+		File dir = new File(dumpsPathDescription);
+		
+		File[] filesInDirectory = dir.listFiles();
+		
+		
+		System.out.println(filesInDirectory.length);
+		
+		List<File> resultList = Arrays.asList(filesInDirectory);
+		List<Path> resultPathList = new ArrayList<>();	
+		
+		for (File fl : resultList) {
+			resultPathList.add(fl.toPath());
+		}
+		
+		
+		//Stream<Path> streamOfFiles = Files.walk(dumpPath, FileVisitOption.FOLLOW_LINKS);
 	
-		Path[] pathArray = (Path[]) streamOfFiles.toArray();
+		//Path[] pathArray = (Path[]) streamOfFiles.toArray();
 		
-		return Arrays.asList(pathArray);
+		//streamOfFiles.close();
+		return resultPathList;
 		
 	}
 	

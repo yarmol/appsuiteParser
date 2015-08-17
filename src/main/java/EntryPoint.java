@@ -10,9 +10,7 @@ import accsuite.main.App;
  */
 public class EntryPoint {
     public static void main(String[] args) throws IOException {
-        DoSomething doSomething = new DoSomething();
-        doSomething.execute(Arrays.asList("test123", "test2", "test31238"));
-        
+          
         App.start(args);
     }
 }

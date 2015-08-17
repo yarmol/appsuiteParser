@@ -19,12 +19,13 @@ public class FileDescriptor extends FileDirectoryDescriptor{
 	private  DumpTypeEnum 		type;
 	private  long 				size;
 	
+
 	
-	FileDescriptor(Path filePath) throws IOException {
-		super(filePath);
+	FileDescriptor(File fileReference) throws IOException {
+		super(fileReference);
 		
-	
-	
+		Path filePath = fileReference.toPath();
+		
 		String fileExtension = filePath.toAbsolutePath().getFileName().toString().split("\\.")[0];
 		
 		if (fileExtension.equals("cf")) {
@@ -40,9 +41,6 @@ public class FileDescriptor extends FileDirectoryDescriptor{
 		this.size 			  = this.attributes.size();	
 		
 	}
-	
-	
-
 
 
 	public DumpTypeEnum getType() {

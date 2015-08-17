@@ -53,11 +53,7 @@ public class App {
 
 		DoProcess.start();
 		
-		
-		
-		
-		
-		
+
 	}
 
 }
